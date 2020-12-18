@@ -1,0 +1,18 @@
+<h1>ブログ一覧</h1>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+  </tr>
+<% @fcbooks.each do |fcbook| %>
+  <tr>
+    <td><%= fcbook.title %></td>
+    <td><%= fcbook.content %></td>
+    <td><%= link_to '詳細を確認する', fcbook_path(fcbook.id) %></td>
+    <td><%= link_to "ブログを編集する", edit_fcbook_path(fcbook.id) %></td>
+    <td><%= link_to 'ブログを削除する', fcbook_path(fcbook.id), method: :delete, data: { confirm: '本当に編集していいですか？' } %></td>
+  </tr>
+<% end %>
+<%= link_to '新しくブログを投稿する', new_fcbook_path %>
+</table>
