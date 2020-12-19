@@ -2,4 +2,8 @@
 <p>タイトル:　<%= @fcbook.title %></p>
 <p>内容: <%= @fcbook.content %></p>
 <p>投稿者:<%= @fcbook.user.name%></p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @fcbook.image.url %>
+</p>
 <%= link_to '一覧へ', fcbooks_path %>

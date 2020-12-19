@@ -5,12 +5,14 @@
     <th>タイトル</th>
     <th>内容</th>
     <th>投稿者</th>
+    <th>時間</th>
   </tr>
 <% @fcbooks.each do |fcbook| %>
   <tr>
     <td><%= fcbook.title %></td>
     <td><%= fcbook.content %></td>
     <td><%= fcbook.user.name%></td>
+    <td><%=l fcbook.created_at, format: :long%></td>
     <td><%= link_to '詳細を確認する', fcbook_path(fcbook.id) %></td>
     <td><%= link_to "ブログを編集する", edit_fcbook_path(fcbook.id) %></td>
     <td><%= link_to 'ブログを削除する', fcbook_path(fcbook.id), method: :delete, data: { confirm: '本当に編集していいですか？' } %></td>

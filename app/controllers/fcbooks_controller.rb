@@ -43,7 +43,7 @@ class FcbooksController < ApplicationController
 
  private
    def fcbook_params
-     params.require(:fcbook).permit(:title, :content)
+     params.require(:fcbook).permit(:title, :content, :image, :image_cache)
    end
    def set_fcbook
      @fcbook = Fcbook.find(params[:id])
