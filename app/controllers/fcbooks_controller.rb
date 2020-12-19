@@ -8,6 +8,7 @@ class FcbooksController < ApplicationController
   end
   def create
     @fcbook = Fcbook.new(fcbook_params)
+    @fcbook.user_id = current_user.id
     if params[:back]
       render :new
     else
@@ -24,6 +25,7 @@ class FcbooksController < ApplicationController
   end
   def update
     if @fcbook.update(fcbook_params)
+
       redirect_to fcbooks_path, notice: "編集しました"
     else
       render :edit
@@ -34,7 +36,8 @@ class FcbooksController < ApplicationController
     redirect_to fcbooks_path, notice:"削除しました"
   end
   def confirm
-   @fcbook = Fcbook.new(fcbook_params)
+    #createの下2行を省略して記述してある
+   @fcbook = current_user.fcbooks.build(fcbook_params)
    render :new if @fcbook.invalid?
   end
 
