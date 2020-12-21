@@ -1,3 +1,50 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+header {
+  width: 100%;
+  background-color: #3A3B3C;
+  height: 54px;
+  margin: 0
+}
+a{
+  color: #1B76F2;
+}
+header ul {
+  margin: 0 auto;
+  list-style: none;
+}
+header ul a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: white;
+}
+header li {
+  float: left;
+  width: auto;
+}
+header ul:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+body {
+  background: #EFF2F5;
+ flex: 1;
+}
+div.card {
+  text-align: center;
+  background: #FFF;
+  margin: 40px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px;
+}
+button.btn {
+  padding: 0 16px;
+  margin: 10px;
+  background-color: #1B76F2;
+    color: white;
+}

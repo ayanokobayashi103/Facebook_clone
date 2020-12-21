@@ -23,9 +23,9 @@ class FcbooksController < ApplicationController
   end
   def edit
   end
+
   def update
     if @fcbook.update(fcbook_params)
-
       redirect_to fcbooks_path, notice: "編集しました"
     else
       render :edit
@@ -36,7 +36,6 @@ class FcbooksController < ApplicationController
     redirect_to fcbooks_path, notice:"削除しました"
   end
   def confirm
-    #createの下2行を省略して記述してある
    @fcbook = current_user.fcbooks.build(fcbook_params)
    render :new if @fcbook.invalid?
   end

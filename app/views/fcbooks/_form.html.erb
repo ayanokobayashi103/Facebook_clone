@@ -1,7 +1,7 @@
 <%= form_with(model: @fcbook, local: true, url: choose_new_or_edit) do |form| %>
 <% if @fcbook.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @fcbook.errors.count %>件のエラーがあります。</h2>
+    <div class="alert alert-info" role="alert">
+      <h5><%= @fcbook.errors.count %>件のエラーがあります。</h5>
       <ul>
       <% @fcbook.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -30,4 +30,4 @@
     <%= form.submit %>
   </div>
 <% end %>
-<%= link_to "ブログ一覧画面にもどる", fcbooks_path %>
+<%= link_to "一覧画面にもどる", fcbooks_path %>
