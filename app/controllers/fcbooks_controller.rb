@@ -22,11 +22,10 @@ class FcbooksController < ApplicationController
   def show
   end
   def edit
-     unless @fcbook == current_user.id
+     unless @fcbook.user_id == current_user.id
        redirect_to fcbooks_path, notice: "編集できません"
      end
   end
-
   def update
     if @fcbook.update(fcbook_params)
       redirect_to fcbooks_path, notice: "編集しました"
@@ -35,8 +34,12 @@ class FcbooksController < ApplicationController
     end
   end
   def destroy
-    @fcbook.destroy
-    redirect_to fcbooks_path, notice:"削除しました"
+    unless @fcbook.user_id == current_user.id
+      redirect_to fcbooks_path, notice: "削除できません"
+    else
+      redirect_to fcbooks_path, notice:"削除しました"
+      @fcbook.destroy
+    end
   end
   def confirm
    @fcbook = current_user.fcbooks.build(fcbook_params)

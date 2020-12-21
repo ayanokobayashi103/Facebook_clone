@@ -10,8 +10,10 @@
       <p><%= image_tag fcbook.image.url %></p>
       <p>タイトル<br><%= link_to fcbook.title, fcbook_path(fcbook.id) %></p><br>
       <p>内容<br><%= fcbook.content %></p><br>
+      <% if fcbook.user.id == current_user.id %>
       <p><%= link_to '編集する', edit_fcbook_path(fcbook.id) %></p><br>
       <p><%= link_to '削除する', fcbook_path(fcbook.id), method: :delete, data: { confirm: '本当に編集していいですか？' } %></p><br>
+      <% end %>
     </div>
   </div>
 </div>
