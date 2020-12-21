@@ -1,15 +1,15 @@
 <h3>以下の内容で、送信する。</h3>
 <%= form_with(model: @fcbook, url: fcbooks_path, local: true) do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-  <p>タイトル:<%= @fcbook.title %></p>
-  <p>本文:<%= @fcbook.content %></p>
+<%= form.hidden_field :title %>
+<%= form.hidden_field :content %>
+<p>タイトル:<%= @fcbook.title %></p>
+<p>本文:<%= @fcbook.content %></p>
 
 <%= image_tag(@fcbook.image.url) if @fcbook.image && @fcbook.image.url %>
 <%= form.hidden_field :image_cache %>
 
-  <%= form.submit  "投稿する" %>
-  <% end %>
+<p><%= form.submit  "投稿する" %></p>
+<% end %>
 <%= form_with(model:@fcbook, url:fcbooks_path, local:true, method:"get") do |form| %>
 <%= form.hidden_field :image_cache %>
 <%= form.submit "戻る",  name: 'back'%>

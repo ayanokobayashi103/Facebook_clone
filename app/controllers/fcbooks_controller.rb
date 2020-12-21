@@ -22,6 +22,9 @@ class FcbooksController < ApplicationController
   def show
   end
   def edit
+     unless @fcbook == current_user.id
+       redirect_to fcbooks_path, notice: "編集できません"
+     end
   end
 
   def update

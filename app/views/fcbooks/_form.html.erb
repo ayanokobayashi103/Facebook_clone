@@ -1,3 +1,4 @@
+<div class="center-block" style="width: 350px;">
 <%= form_with(model: @fcbook, local: true, url: choose_new_or_edit) do |form| %>
 <% if @fcbook.errors.any? %>
     <div class="alert alert-info" role="alert">
@@ -18,16 +19,31 @@
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
+
   <div class="field">
-  <%= form.label :image %>
-  <!-- 確認画面から新規作成画面に戻った時に、 -->
-  <!-- アップロードした画像を表示させるための記述 -->
-  <%= image_tag(@fcbook.image.url) if @fcbook.image && @fcbook.image.url %>
-  <%= form.file_field :image %>
-  <%= form.hidden_field :image_cache %>
-</div>
-<div class="actions">
+    <%= image_tag(@fcbook.image.url) if @fcbook.image && @fcbook.image.url %>
+    <div class="input-group">
+      <label class="input-group-btn">
+        <span class="btn btn-primary">
+          Choose File<%= form.file_field :image, class: "fileInput",style: "display:none;" %>
+        </span>
+      </label>
+      <input type="text" class="form-control" readonly="">
+      <%= form.hidden_field :image_cache %>
+    </div>
+  </div>
+
+    <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
 <%= link_to "一覧画面にもどる", fcbooks_path %>
+
+<script>
+$(document).on('change', ':file', function() {
+    var input = $(this),
+    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.parent().parent().next(':text').val(label);
+});
+</script>
