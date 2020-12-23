@@ -22,9 +22,9 @@ class FcbooksController < ApplicationController
   def show
   end
   def edit
-     unless @fcbook.user_id == current_user.id
-       redirect_to fcbooks_path, notice: "編集できません"
-     end
+    unless @fcbook.user_id == current_user.id
+      redirect_to fcbooks_path, notice: "編集できません"
+    end
   end
   def update
     if @fcbook.update(fcbook_params)
@@ -42,15 +42,15 @@ class FcbooksController < ApplicationController
     end
   end
   def confirm
-   @fcbook = current_user.fcbooks.build(fcbook_params)
-   render :new if @fcbook.invalid?
+    @fcbook = current_user.fcbooks.build(fcbook_params)
+    render :new if @fcbook.invalid?
   end
 
- private
-   def fcbook_params
-     params.require(:fcbook).permit(:title, :content, :image, :image_cache)
-   end
-   def set_fcbook
-     @fcbook = Fcbook.find(params[:id])
-   end
+  private
+    def fcbook_params
+      params.require(:fcbook).permit(:title, :content, :image, :image_cache)
+    end
+    def set_fcbook
+      @fcbook = Fcbook.find(params[:id])
+    end
 end

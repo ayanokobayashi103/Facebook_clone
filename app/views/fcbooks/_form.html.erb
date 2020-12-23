@@ -1,22 +1,22 @@
-<div class="center-block" style="width: 350px;">
-<%= form_with(model: @fcbook, local: true, url: choose_new_or_edit) do |form| %>
-<% if @fcbook.errors.any? %>
-    <div class="alert alert-info" role="alert">
-      <h5><%= @fcbook.errors.count %>件のエラーがあります。</h5>
-      <ul>
+<div class="center-block" style="width: 300px;">
+  <%= form_with(model: @fcbook, local: true, url: choose_new_or_edit) do |form| %>
+  <% if @fcbook.errors.any? %>
+  <div class="alert alert-info" role="alert">
+    <h5><%= @fcbook.errors.count %>件のエラーがあります。</h5>
+    <ul>
       <% @fcbook.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
   <p><div class="fcbook_title"></p>
-    <%= form.label :title %>
+    <%= form.label :title %><br>
     <%= form.text_field :title %>
   </div>
   <p><div class="fcbook_content"></p>
-    <%= form.label :content %>
+    <%= form.label :content %><br>
     <%= form.text_field :content %>
   </div><br>
 
@@ -32,18 +32,18 @@
       <%= form.hidden_field :image_cache %>
     </div>
   </div>
-<br>
-    <div class="actions">
+  <br>
+  <div class="actions">
     <%= form.submit %>
   </div>
-<% end %>
-<%= link_to "一覧画面にもどる", fcbooks_path %>
+  <% end %>
+  <%= link_to "一覧画面にもどる", fcbooks_path %>
 
-<script>
-$(document).on('change', ':file', function() {
+  <script>
+  $(document).on('change', ':file', function() {
     var input = $(this),
     numFiles = input.get(0).files ? input.get(0).files.length : 1,
     label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.parent().parent().next(':text').val(label);
-});
-</script>
+      input.parent().parent().next(':text').val(label);
+    });
+  </script>

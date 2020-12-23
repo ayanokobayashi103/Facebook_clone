@@ -4,10 +4,8 @@
 <%= form.hidden_field :content %>
 <p>タイトル:<%= @fcbook.title %></p>
 <p>本文:<%= @fcbook.content %></p>
-
 <%= image_tag(@fcbook.image.url) if @fcbook.image && @fcbook.image.url %>
 <%= form.hidden_field :image_cache %>
-
 <p><%= form.submit  "投稿する" %></p>
 <% end %>
 <%= form_with(model:@fcbook, url: new_fcbook_path, local:true, method:"get") do |form| %>
