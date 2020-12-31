@@ -4,7 +4,7 @@
   <div class = "card">
     <div class = "card_head">
       <p>投稿者:<%= fcbook.user.name%></p>
-      <p><%=l fcbook.created_at, format: :short%></p><br>
+      <p><%= fcbook.created_at.to_s(:datetime_jp) %></p><br>
     </div>
     <div class = "card_body">
       <p><%= image_tag fcbook.image.url %></p>
